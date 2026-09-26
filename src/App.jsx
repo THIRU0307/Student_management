@@ -27,10 +27,11 @@ function App() {
 
                 <Sidebar />
 
-                <div style={{ marginLeft: "200px" }}>
+                <div style={{ marginLeft: "200px"}}>
 
                     <Header />
-
+                </div>
+                <div style={{ marginLeft: "200px" ,  paddingTop: "70px"}}>
                     <Routes>
 
                         <Route

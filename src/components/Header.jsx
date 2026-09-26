@@ -2,7 +2,16 @@ import React from "react";
 
 function Header() {
     return (
-        <nav className="navbar bg-body-tertiary bg-white shadow">
+        <nav   
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "200px",
+        right: "0",
+        height: "70px",
+        zIndex: "1000",
+      }}  
+        className="navbar bg-body-tertiary bg-white shadow">
 
             <div className="container-fluid">
 
