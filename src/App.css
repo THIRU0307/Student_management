@@ -1,0 +1,163 @@
+/* ===== Layout shell ===== */
+:root {
+    --sidebar-width: 200px;
+    --header-height: 70px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.min-w-0 { min-width: 0; }
+
+/* Sidebar */
+.app-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 1050;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Header */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: var(--header-height);
+    z-index: 1000;
+}
+
+.app-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Page content */
+.app-content {
+    margin-left: var(--sidebar-width);
+    padding-top: calc(var(--header-height) + 5px);
+    padding-bottom: 20px;
+    min-height: 100vh;
+}
+
+/* Hamburger hidden on desktop, backdrop hidden on desktop */
+.menu-btn { display: none; }
+.sidebar-backdrop { display: none; }
+
+
+/* ===== Tablet & Mobile (below 992px) ===== */
+@media (max-width: 991.98px) {
+
+    .app-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .app-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1040;
+    }
+
+    .app-header {
+        left: 0;
+    }
+
+    .app-content {
+        margin-left: 0;
+    }
+
+    .menu-btn {
+        display: inline-block;
+    }
+
+    .app-title {
+        font-size: 1.15rem !important;
+    }
+}
+
+
+/* ===== Mobile (below 576px) ===== */
+@media (max-width: 575.98px) {
+
+    :root {
+        --header-height: 60px;
+    }
+
+    .app-title {
+        font-size: 0.95rem !important;
+    }
+
+    .app-header .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Page headings */
+    .app-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .app-content h4 {
+        font-size: 1rem;
+        font-weight: normal;
+        color: #6c757d;
+    }
+
+    /* Page title row + "Add" button wraps nicely */
+    .app-content > .d-flex.justify-content-between {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0 0.75rem;
+    }
+
+    .app-content > .d-flex.justify-content-between .btn {
+        margin-right: 0 !important;
+    }
+
+    /* Cards & forms get a bit of side breathing room */
+    .app-content .card-body {
+        padding: 0.9rem;
+    }
+
+    /* Student card: details no longer pushed far right, long emails wrap */
+    .app-content .ms-5 {
+        margin-left: 0.5rem !important;
+        word-break: break-word;
+    }
+
+    /* Edit / Delete buttons fit the screen */
+    .app-content .btn.px-5 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        flex: 1;
+    }
+
+    /* Tables: smaller text, scroll sideways inside their own box */
+    .app-content .table-responsive {
+        padding: 0 0.25rem;
+    }
+
+    .app-content table {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    /* Dashboard list rows */
+    .app-content .p-2.rounded {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+}

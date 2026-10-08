@@ -1,25 +1,30 @@
 import React from "react";
 
-function Header() {
+function Header({ onMenuClick }) {
     return (
-        <nav   
-      style={{
-        position: "fixed",
-        top: "0",
-        left: "200px",
-        right: "0",
-        height: "70px",
-        zIndex: "1000",
-      }}  
-        className="navbar bg-body-tertiary bg-white shadow">
+        <nav className="navbar bg-body-tertiary bg-white shadow app-header">
 
-            <div className="container-fluid">
+            <div className="container-fluid flex-nowrap">
 
-                <a className="navbar-brand fw-bold fs-3">
-                    Student Management System
-                </a>
+                <div className="d-flex align-items-center gap-2 min-w-0">
 
-                <div className="d-flex align-items-center">
+                    {/* Hamburger – visible only on mobile / tablet */}
+                    <button
+                        className="btn btn-outline-secondary menu-btn"
+                        type="button"
+                        aria-label="Toggle menu"
+                        onClick={onMenuClick}
+                    >
+                        ☰
+                    </button>
+
+                    <span className="navbar-brand fw-bold fs-3 m-0 app-title">
+                        Student Management System
+                    </span>
+
+                </div>
+
+                <div className="d-flex align-items-center flex-shrink-0">
 
                     <button
                         className="btn btn-primary border rounded-circle m-1"
@@ -29,7 +34,7 @@ function Header() {
                     </button>
 
                     <button
-                        className="btn m-1 fw-bold"
+                        className="btn m-1 fw-bold d-none d-sm-inline-block"
                         type="button"
                     >
                         Admin

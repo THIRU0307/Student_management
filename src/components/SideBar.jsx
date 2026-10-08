@@ -1,18 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ open, onClose }) {
     return (
-        <div
-            className="bg-white shadow"
-            style={{
-                width: "200px",
-                height: "100vh",
-                position: "fixed",
-                top: 0,
-                left: 0,
-                padding: "20px",
-            }}
-        >
+        <div className={"bg-white shadow app-sidebar" + (open ? " open" : "")}>
 
             <h3 className="fw-bold mb-4">
                 Menu
@@ -21,6 +11,7 @@ function Sidebar() {
             <div className="d-flex flex-column gap-2">
 
                 <NavLink
+                    onClick={onClose}
                     to="/"
                     end
                     className={({ isActive }) =>
@@ -34,6 +25,7 @@ function Sidebar() {
 
 
                 <NavLink
+                    onClick={onClose}
                     to="/students"
                     className={({ isActive }) =>
                         isActive
@@ -46,6 +38,7 @@ function Sidebar() {
 
 
                 <NavLink
+                    onClick={onClose}
                     to="/courses"
                     className={({ isActive }) =>
                         isActive
@@ -58,6 +51,7 @@ function Sidebar() {
 
 
                 <NavLink
+                    onClick={onClose}
                     to="/attendance"
                     className={({ isActive }) =>
                         isActive
@@ -70,6 +64,7 @@ function Sidebar() {
 
 
                 <NavLink
+                    onClick={onClose}
                     to="/marks"
                     className={({ isActive }) =>
                         isActive

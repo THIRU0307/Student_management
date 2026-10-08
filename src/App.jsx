@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     BrowserRouter,
     Route,
@@ -15,9 +15,13 @@ import Sidebar from "./components/SideBar";
 import Header from "./components/Header";
 
 import { DataProvider } from "./Context/DataContext";
+import "./App.css";
 
 
 function App() {
+
+    // Sidebar open/close (used only on mobile & tablet)
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
 
@@ -25,13 +29,22 @@ function App() {
 
             <BrowserRouter>
 
-                <Sidebar />
+                <Sidebar
+                    open={sidebarOpen}
+                    onClose={() => setSidebarOpen(false)}
+                />
 
-                <div style={{ marginLeft: "200px"}}>
+                {/* Dark backdrop behind the sidebar on mobile */}
+                {sidebarOpen && (
+                    <div
+                        className="sidebar-backdrop"
+                        onClick={() => setSidebarOpen(false)}
+                    />
+                )}
 
-                    <Header />
-                </div>
-                <div style={{ marginLeft: "200px" ,  paddingTop: "70px"}}>
+                <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+
+                <div className="app-content">
                     <Routes>
 
                         <Route
